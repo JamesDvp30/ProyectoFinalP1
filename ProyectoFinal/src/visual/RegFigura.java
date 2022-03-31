@@ -26,6 +26,11 @@ public class RegFigura extends JDialog {
 	private JTextField textField;
 	private JTextField textField_1;
 	private JTextField textField_2;
+	private JTextField textField_3;
+	private JTextField textField_4;
+	private JTextField textField_5;
+	private JTextField textField_6;
+	private JTextField textField_7;
 
 	/**
 	 * Launch the application.
@@ -45,7 +50,7 @@ public class RegFigura extends JDialog {
 	 */
 	public RegFigura() {
 		setTitle("Registro de figura");
-		setBounds(100, 100, 585, 430);
+		setBounds(100, 100, 585, 503);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
@@ -86,7 +91,7 @@ public class RegFigura extends JDialog {
 			
 			textField_2 = new JTextField();
 			textField_2.setEnabled(false);
-			textField_2.setBounds(103, 97, 116, 22);
+			textField_2.setBounds(103, 97, 156, 22);
 			panel.add(textField_2);
 			textField_2.setColumns(10);
 		}
@@ -117,6 +122,57 @@ public class RegFigura extends JDialog {
 			rdbtnRectangulo.setBounds(416, 23, 127, 25);
 			panel.add(rdbtnRectangulo);
 		}
+		
+		JPanel panel = new JPanel();
+		panel.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "Dimensiones Trapecio", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
+		panel.setBounds(12, 244, 543, 164);
+		contentPanel.add(panel);
+		panel.setLayout(null);
+		
+		JLabel lblNewLabel_2 = new JLabel("Vertice TX");
+		lblNewLabel_2.setBounds(12, 41, 73, 16);
+		panel.add(lblNewLabel_2);
+		
+		textField_3 = new JTextField();
+		textField_3.setBounds(97, 38, 116, 22);
+		panel.add(textField_3);
+		textField_3.setColumns(10);
+		
+		JLabel lblNewLabel_3 = new JLabel("Vertice TY");
+		lblNewLabel_3.setBounds(12, 70, 73, 16);
+		panel.add(lblNewLabel_3);
+		
+		textField_4 = new JTextField();
+		textField_4.setBounds(97, 67, 116, 22);
+		panel.add(textField_4);
+		textField_4.setColumns(10);
+		
+		JLabel lblNewLabel_4 = new JLabel("Vertice TZ");
+		lblNewLabel_4.setBounds(12, 99, 73, 16);
+		panel.add(lblNewLabel_4);
+		
+		textField_5 = new JTextField();
+		textField_5.setColumns(10);
+		textField_5.setBounds(97, 96, 116, 22);
+		panel.add(textField_5);
+		
+		JLabel lblNewLabel_2_1 = new JLabel("Vertice T");
+		lblNewLabel_2_1.setBounds(225, 38, 56, 16);
+		panel.add(lblNewLabel_2_1);
+		
+		textField_6 = new JTextField();
+		textField_6.setColumns(10);
+		textField_6.setBounds(310, 35, 116, 22);
+		panel.add(textField_6);
+		
+		JLabel lblNewLabel_3_1 = new JLabel("Altura T");
+		lblNewLabel_3_1.setBounds(225, 67, 56, 16);
+		panel.add(lblNewLabel_3_1);
+		
+		textField_7 = new JTextField();
+		textField_7.setColumns(10);
+		textField_7.setBounds(310, 64, 116, 22);
+		panel.add(textField_7);
 		{
 			JPanel buttonPane = new JPanel();
 			buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
