@@ -32,6 +32,7 @@ public class ListEstudiante extends JDialog {
 	 * Create the dialog.
 	 */
 	public ListEstudiante() {
+		setTitle("Lista de Estudiantes");
 		setBounds(100, 100, 757, 444);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
