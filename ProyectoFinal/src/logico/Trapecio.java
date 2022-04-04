@@ -10,7 +10,7 @@ public class Trapecio extends Prisma {
 	float AlturaT;
 	
 	public Trapecio() {
-		// TODO Auto-generated constructor stub
+		
 	}
 
 	public float getVerticeTx() {
