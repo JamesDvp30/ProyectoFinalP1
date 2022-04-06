@@ -19,6 +19,7 @@ import java.awt.Toolkit;
 import java.awt.SystemColor;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.Panel;
 
 public class RegFigura extends JDialog {
 
@@ -31,16 +32,38 @@ public class RegFigura extends JDialog {
 	private JTextField textField;
 	private JTextField textField_1;
 	private JTextField textField_2;
-	private JTextField textField_3;
-	private JTextField textField_4;
+	private JTextField txtVerticeTX;
+	private JTextField txtVerticeTY;
 	private JTextField textField_5;
 	private JTextField textField_6;
+	private Panel PanelTrapecio;
+	private JTextField txtVerticeTZ;
+	private JTextField txtAlturaT;
+	private JTextField txtVerticeT;
+	private Panel PanelCuadrado;
+	private Panel PanelRombo;
+	private JLabel lblNewLabel_7;
+	private JTextField textField_3;
+	private JLabel lblNewLabel_8;
+	private JTextField textField_4;
+	private JLabel lblNewLabel_9;
 	private JTextField textField_7;
-	private JPanel PanelTrapecio;
 	private JTextField textField_8;
+	private Panel panelTriangulo;
+	private JLabel lblVerticeeBx;
 	private JTextField textField_9;
-	private JPanel PanelCuadrado;
-	private JPanel panel_1;
+	private JLabel lblVerticeBy;
+	private JTextField textField_10;
+	private JLabel lblVerticeAltura;
+	private JTextField textField_11;
+	private Panel panelRectangulo;
+	private JLabel lblNewLabel_10;
+	private JTextField textField_12;
+	private JLabel lblNewLabel_11;
+	private JTextField textField_13;
+	private JLabel lblNewLabel_12;
+	private JLabel lblVerticeR;
+	private JTextField textField_14;
 
 	/**
 	 * Launch the application.
@@ -61,7 +84,7 @@ public class RegFigura extends JDialog {
 	public RegFigura() {
 		setIconImage(Toolkit.getDefaultToolkit().getImage(RegFigura.class.getResource("/image/Reg figuras.jpg")));
 		setTitle("Registro de figura");
-		setBounds(100, 100, 585, 503);
+		setBounds(100, 100, 591, 625);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBackground(Color.LIGHT_GRAY);
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -117,7 +140,7 @@ public class RegFigura extends JDialog {
 			JPanel panel = new JPanel();
 			panel.setBackground(Color.LIGHT_GRAY);
 			panel.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "Eliga Tipo De Figura  :", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 255)));
-			panel.setBounds(12, 162, 548, 69);
+			panel.setBounds(12, 143, 548, 69);
 			contentPanel.add(panel);
 			panel.setLayout(null);
 			
@@ -167,109 +190,207 @@ public class RegFigura extends JDialog {
 			panel.add(rdbtnRectangulo);
 		}
 		
-		PanelTrapecio = new JPanel();
-		PanelTrapecio.setBackground(Color.LIGHT_GRAY);
-		PanelTrapecio.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "Dimensiones Trapecio :", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 255)));
-		PanelTrapecio.setBounds(12, 244, 543, 164);
+		PanelTrapecio = new Panel();
+		PanelTrapecio.setBounds(12, 420, 548, 113);
 		contentPanel.add(PanelTrapecio);
 		PanelTrapecio.setLayout(null);
 		
-		JLabel lblNewLabel_2 = new JLabel("Vertice TX");
-		lblNewLabel_2.setFont(new Font("Viner Hand ITC", Font.BOLD, 13));
-		lblNewLabel_2.setBounds(12, 41, 79, 16);
+		JLabel lblNewLabel_2 = new JLabel("Vertice TX:");
+		lblNewLabel_2.setBounds(12, 23, 71, 16);
 		PanelTrapecio.add(lblNewLabel_2);
 		
-		textField_3 = new JTextField();
-		textField_3.setBounds(97, 38, 116, 22);
-		PanelTrapecio.add(textField_3);
-		textField_3.setColumns(10);
+		txtVerticeTX = new JTextField();
+		txtVerticeTX.setBounds(95, 20, 116, 22);
+		PanelTrapecio.add(txtVerticeTX);
+		txtVerticeTX.setColumns(10);
 		
-		JLabel lblNewLabel_3 = new JLabel("Vertice TY");
-		lblNewLabel_3.setFont(new Font("Viner Hand ITC", Font.BOLD, 13));
-		lblNewLabel_3.setBounds(12, 70, 79, 16);
+		JLabel lblNewLabel_3 = new JLabel("Vertice TY:");
+		lblNewLabel_3.setBounds(12, 52, 71, 16);
 		PanelTrapecio.add(lblNewLabel_3);
 		
-		textField_4 = new JTextField();
-		textField_4.setBounds(97, 67, 116, 22);
-		PanelTrapecio.add(textField_4);
-		textField_4.setColumns(10);
+		txtVerticeTY = new JTextField();
+		txtVerticeTY.setBounds(95, 49, 116, 22);
+		PanelTrapecio.add(txtVerticeTY);
+		txtVerticeTY.setColumns(10);
 		
-		JLabel lblNewLabel_4 = new JLabel("Vertice TZ");
-		lblNewLabel_4.setFont(new Font("Viner Hand ITC", Font.BOLD, 13));
-		lblNewLabel_4.setBounds(12, 99, 73, 16);
-		PanelTrapecio.add(lblNewLabel_4);
+		JLabel lblNewLabel_6 = new JLabel("Vertice TZ:");
+		lblNewLabel_6.setBounds(12, 81, 64, 16);
+		PanelTrapecio.add(lblNewLabel_6);
+		
+		txtVerticeTZ = new JTextField();
+		txtVerticeTZ.setBounds(95, 78, 116, 22);
+		PanelTrapecio.add(txtVerticeTZ);
+		txtVerticeTZ.setColumns(10);
+		
+		txtAlturaT = new JTextField();
+		txtAlturaT.setBounds(338, 20, 116, 22);
+		PanelTrapecio.add(txtAlturaT);
+		txtAlturaT.setColumns(10);
+		
+		txtVerticeT = new JTextField();
+		txtVerticeT.setBounds(338, 49, 116, 22);
+		PanelTrapecio.add(txtVerticeT);
+		txtVerticeT.setColumns(10);
+		
+		JLabel lblAltura = new JLabel("Altura T:");
+		lblAltura.setBounds(259, 23, 56, 16);
+		PanelTrapecio.add(lblAltura);
+		
+		JLabel lblVerticeT = new JLabel("Vertice T:");
+		lblVerticeT.setBounds(259, 52, 67, 16);
+		PanelTrapecio.add(lblVerticeT);
+		
+		PanelRombo = new Panel();
+		PanelRombo.setBounds(12, 325, 547, 42);
+		contentPanel.add(PanelRombo);
+		PanelRombo.setLayout(null);
+		
+		JLabel lblNewLabel_4 = new JLabel("Vertice X:");
+		lblNewLabel_4.setBounds(12, 13, 66, 16);
+		PanelRombo.add(lblNewLabel_4);
 		
 		textField_5 = new JTextField();
+		textField_5.setBounds(74, 10, 66, 22);
+		PanelRombo.add(textField_5);
 		textField_5.setColumns(10);
-		textField_5.setBounds(97, 96, 116, 22);
-		PanelTrapecio.add(textField_5);
 		
-		JLabel lblNewLabel_2_1 = new JLabel("Vertice T");
-		lblNewLabel_2_1.setFont(new Font("Viner Hand ITC", Font.BOLD, 13));
-		lblNewLabel_2_1.setBounds(235, 41, 75, 16);
-		PanelTrapecio.add(lblNewLabel_2_1);
+		JLabel lblNewLabel_5 = new JLabel("Vertice Y:");
+		lblNewLabel_5.setBounds(152, 13, 56, 16);
+		PanelRombo.add(lblNewLabel_5);
 		
 		textField_6 = new JTextField();
+		textField_6.setBounds(220, 10, 66, 22);
+		PanelRombo.add(textField_6);
 		textField_6.setColumns(10);
-		textField_6.setBounds(310, 35, 116, 22);
-		PanelTrapecio.add(textField_6);
 		
-		JLabel lblNewLabel_3_1 = new JLabel("Altura T");
-		lblNewLabel_3_1.setFont(new Font("Viner Hand ITC", Font.BOLD, 13));
-		lblNewLabel_3_1.setBounds(235, 70, 62, 16);
-		PanelTrapecio.add(lblNewLabel_3_1);
+		lblNewLabel_9 = new JLabel("Vertice Z:");
+		lblNewLabel_9.setBounds(298, 13, 60, 16);
+		PanelRombo.add(lblNewLabel_9);
 		
 		textField_7 = new JTextField();
+		textField_7.setBounds(370, 10, 56, 22);
+		PanelRombo.add(textField_7);
 		textField_7.setColumns(10);
-		textField_7.setBounds(310, 64, 116, 22);
-		PanelTrapecio.add(textField_7);
-		
-		PanelCuadrado = new JPanel();
-		PanelCuadrado.setBorder(new TitledBorder(null, "Informacion Rombo:", TitledBorder.LEADING, TitledBorder.TOP, null, null));
-		PanelCuadrado.setBounds(0, 0, 543, 164);
-		PanelTrapecio.add(PanelCuadrado);
-		PanelCuadrado.setLayout(null);
-		
-		JLabel lblNewLabel_5 = new JLabel("Vertice X:");
-		lblNewLabel_5.setBounds(27, 135, 86, 16);
-		PanelCuadrado.add(lblNewLabel_5);
-		
-		JLabel lblVerticeY = new JLabel("Vertice Y:");
-		lblVerticeY.setBounds(252, 135, 56, 16);
-		PanelCuadrado.add(lblVerticeY);
 		
 		textField_8 = new JTextField();
-		textField_8.setBounds(97, 132, 116, 22);
-		PanelCuadrado.add(textField_8);
+		textField_8.setBounds(484, 10, 51, 22);
+		PanelRombo.add(textField_8);
 		textField_8.setColumns(10);
 		
+		lblVerticeR = new JLabel("Vertice R:");
+		lblVerticeR.setBounds(431, 13, 72, 16);
+		PanelRombo.add(lblVerticeR);
+		
+		PanelCuadrado = new Panel();
+		PanelCuadrado.setBounds(12, 218, 548, 36);
+		contentPanel.add(PanelCuadrado);
+		PanelCuadrado.setLayout(null);
+		
+		lblNewLabel_7 = new JLabel("Vertice X:");
+		lblNewLabel_7.setBounds(12, 13, 67, 16);
+		PanelCuadrado.add(lblNewLabel_7);
+		
+		textField_3 = new JTextField();
+		textField_3.setBounds(91, 10, 116, 22);
+		PanelCuadrado.add(textField_3);
+		textField_3.setColumns(10);
+		
+		lblNewLabel_8 = new JLabel("Vertice Y:");
+		lblNewLabel_8.setBounds(263, 13, 56, 16);
+		PanelCuadrado.add(lblNewLabel_8);
+		
+		textField_4 = new JTextField();
+		textField_4.setBounds(347, 10, 116, 22);
+		PanelCuadrado.add(textField_4);
+		textField_4.setColumns(10);
+		
+		panelTriangulo = new Panel();
+		panelTriangulo.setBounds(12, 260, 548, 42);
+		contentPanel.add(panelTriangulo);
+		panelTriangulo.setLayout(null);
+		
+		lblVerticeeBx = new JLabel("Verticee BX:");
+		lblVerticeeBx.setBounds(10, 13, 71, 16);
+		panelTriangulo.add(lblVerticeeBx);
+		
 		textField_9 = new JTextField();
-		textField_9.setBounds(320, 132, 116, 22);
-		PanelCuadrado.add(textField_9);
+		textField_9.setBounds(93, 10, 98, 22);
+		panelTriangulo.add(textField_9);
 		textField_9.setColumns(10);
 		
-		panel_1 = new JPanel();
-		panel_1.setBounds(0, 0, 543, 164);
-		PanelCuadrado.add(panel_1);
+		lblVerticeBy = new JLabel("Vertice BY:");
+		lblVerticeBy.setBounds(203, 13, 80, 16);
+		panelTriangulo.add(lblVerticeBy);
+		
+		textField_10 = new JTextField();
+		textField_10.setBounds(281, 10, 93, 22);
+		panelTriangulo.add(textField_10);
+		textField_10.setColumns(10);
+		
+		lblVerticeAltura = new JLabel("Vertice Altura:");
+		lblVerticeAltura.setBounds(386, 13, 93, 16);
+		panelTriangulo.add(lblVerticeAltura);
+		
+		textField_11 = new JTextField();
+		textField_11.setBounds(480, 10, 56, 22);
+		panelTriangulo.add(textField_11);
+		textField_11.setColumns(10);
+		
+		panelRectangulo = new Panel();
+		panelRectangulo.setBounds(12, 378, 548, 36);
+		contentPanel.add(panelRectangulo);
+		panelRectangulo.setLayout(null);
+		
+		lblNewLabel_10 = new JLabel("Vertice X:");
+		lblNewLabel_10.setBounds(12, 13, 58, 16);
+		panelRectangulo.add(lblNewLabel_10);
+		
+		textField_12 = new JTextField();
+		textField_12.setBounds(82, 10, 104, 22);
+		panelRectangulo.add(textField_12);
+		textField_12.setColumns(10);
+		
+		lblNewLabel_11 = new JLabel("Vertice Y:");
+		lblNewLabel_11.setBounds(200, 13, 56, 16);
+		panelRectangulo.add(lblNewLabel_11);
+		
+		textField_13 = new JTextField();
+		textField_13.setBounds(268, 10, 89, 22);
+		panelRectangulo.add(textField_13);
+		textField_13.setColumns(10);
+		
+		lblNewLabel_12 = new JLabel("Vertice Z:");
+		lblNewLabel_12.setBounds(362, 13, 56, 16);
+		panelRectangulo.add(lblNewLabel_12);
+		
+		textField_14 = new JTextField();
+		textField_14.setBounds(420, 10, 116, 22);
+		panelRectangulo.add(textField_14);
+		textField_14.setColumns(10);
 		{
 			JPanel buttonPane = new JPanel();
 			buttonPane.setBackground(Color.LIGHT_GRAY);
 			buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
 			getContentPane().add(buttonPane, BorderLayout.SOUTH);
 			{
-				JButton okButton = new JButton("Registrar");
-				okButton.setForeground(new Color(0, 0, 255));
-				okButton.setFont(new Font("Book Antiqua", Font.BOLD, 14));
-				okButton.setActionCommand("OK");
-				buttonPane.add(okButton);
-				getRootPane().setDefaultButton(okButton);
+				JButton btnRegistrar = new JButton("Registrar");
+				btnRegistrar.setForeground(new Color(0, 0, 255));
+				btnRegistrar.setFont(new Font("Book Antiqua", Font.BOLD, 14));
+				btnRegistrar.setActionCommand("OK");
+				buttonPane.add(btnRegistrar);
+				getRootPane().setDefaultButton(btnRegistrar);
 			}
 			{
-				JButton cancelButton = new JButton("Cancelar");
-				cancelButton.setForeground(new Color(0, 0, 255));
-				cancelButton.setFont(new Font("Book Antiqua", Font.BOLD, 14));
-				cancelButton.setActionCommand("Cancel");
-				buttonPane.add(cancelButton);
+				JButton btnCancelar = new JButton("Cancelar");
+				btnCancelar.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent arg0) {
+						dispose();
+					}
+				});
+				btnCancelar.setForeground(new Color(0, 0, 255));
+				btnCancelar.setFont(new Font("Book Antiqua", Font.BOLD, 14));
+				btnCancelar.setActionCommand("Cancel");
+				buttonPane.add(btnCancelar);
 			}
 		}
 	}
