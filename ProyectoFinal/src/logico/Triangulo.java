@@ -1,37 +1,31 @@
 package logico;
 
 public class Triangulo extends Prisma {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 5325596378792549454L;
+
+	public Triangulo(float altura3d) {
+		super(altura3d);
+	}
+
+	@Override
+	public float area() {
+		//Area en base al perimetro = Raiz(S(S-ladoA)(S-ladoB)(S - ladoC))
+		//S = Perimetro / 2
+		
+		float s = perimetro()/2;
+		
+		//Se calcula la distancia de cada lado en base a sus vertices
+		float ladoA = calcularDistancia(0,1);
+		float ladoB = calcularDistancia(1,2);
+		float ladoC = calcularDistancia(0,2);
+		
+		return (float) Math.sqrt(s * (s - ladoA)*(s - ladoB)*(s - ladoC));
+		
 	
-	int verticeBX;
-	int verticeBY;
-	int verticeAltura;
-
-	public int getVerticeBX() {
-		return verticeBX;
-	}
-
-	public void setVerticeBX(int verticeBX) {
-		this.verticeBX = verticeBX;
-	}
-
-	public int getVerticeBY() {
-		return verticeBY;
-	}
-
-	public void setVerticeBY(int verticeBY) {
-		this.verticeBY = verticeBY;
-	}
-
-	public int getVerticeAltura() {
-		return verticeAltura;
-	}
-
-	public void setVerticeAltura(int verticeAltura) {
-		this.verticeAltura = verticeAltura;
-	}
-
-	public Triangulo() {
-		// TODO Auto-generated constructor stub
 	}
 
 }

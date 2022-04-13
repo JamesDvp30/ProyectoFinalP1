@@ -1,55 +1,32 @@
 package logico;
 
 public class Trapecio extends Prisma {
-
-
-	float verticeTx;
-	float verticeTy;
-	float verticeTz;
-	float verticeT;
-	float AlturaT;
 	
-	public Trapecio() {
-		
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 7959816042132181442L;
+	private float altura;
+	public Trapecio(float altura3d, float altura) {
+		super(altura3d);
+		this.altura = altura;
 	}
 
-	public float getVerticeTx() {
-		return verticeTx;
+	@Override
+	public float area() {
+		//A = (baseA + baseC)/2  * altura
+		float baseA = calcularDistancia(0,3);
+		float baseB = calcularDistancia(1,2);
+		return ((baseA + baseB)/2) * altura;
 	}
 
-	public void setVerticeTx(float verticeTx) {
-		this.verticeTx = verticeTx;
+	public float getAltura() {
+		return altura;
 	}
 
-	public float getVerticeTy() {
-		return verticeTy;
+	public void setAltura(float altura) {
+		this.altura = altura;
 	}
+	
 
-	public void setVerticeTy(float verticeTy) {
-		this.verticeTy = verticeTy;
-	}
-
-	public float getVerticeTz() {
-		return verticeTz;
-	}
-
-	public void setVerticeTz(float verticeTz) {
-		this.verticeTz = verticeTz;
-	}
-
-	public float getVerticeT() {
-		return verticeT;
-	}
-
-	public void setVerticeT(float verticeT) {
-		this.verticeT = verticeT;
-	}
-
-	public float getAlturaT() {
-		return AlturaT;
-	}
-
-	public void setAlturaT(float alturaT) {
-		AlturaT = alturaT;
-	}
 }

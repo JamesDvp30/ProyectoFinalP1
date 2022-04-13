@@ -2,56 +2,24 @@ package logico;
 
 public class Rombo extends Prisma {
 
-	float verticeX;
-	float verticeY;
-	float verticeZ;
-	float verticeR;
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 2433241166673451783L;
+
+	public Rombo(float altura3d) {
+		super(altura3d);
+	}
+
+	@Override
+	public float area() {
+		//A = (Diagonal(A,C) * Diagonal(B,D))/2 
+		// TODO Auto-generated method stub
+		float DiagonalAC = calcularDistancia(0,2);
+		float DiagonalBD = calcularDistancia(1,3);
 	
-	
-	public float getVerticeX() {
-		return verticeX;
+		return (DiagonalAC * DiagonalBD)/2;
 	}
 
-
-	public void setVerticeX(float verticeX) {
-		this.verticeX = verticeX;
-	}
-
-
-	public float getVerticeY() {
-		return verticeY;
-	}
-
-
-	public void setVerticeY(float verticeY) {
-		this.verticeY = verticeY;
-	}
-
-
-	public float getVerticeZ() {
-		return verticeZ;
-	}
-
-
-	public void setVerticeZ(float verticeZ) {
-		this.verticeZ = verticeZ;
-	}
-
-
-	public float getVerticeR() {
-		return verticeR;
-	}
-
-
-	public void setVerticeR(float verticeR) {
-		this.verticeR = verticeR;
-	}
-
-
-	public Rombo() {
-		// TODO Auto-generated constructor stub
-	}
-	
-	
-	
 }
+
