@@ -21,12 +21,15 @@ public class CentroEstudios implements Serializable{
 	private static CentroEstudios instance = null;
 	private static File Fname = new File("centro_estudios.dat");
 	private String llaveDeEncriptado;
+	public static Prisma prismaAhora;
+	public int cantPrismas;
 	private CentroEstudios() {
 		super();
 		misUsuarios = new ArrayList<>();
 		misGrupos = new ArrayList<>();
 		misPrismas = new ArrayList<>();
 		llaveDeEncriptado = "iuTRi2h6Rg0ZQTMFBoQG";
+		cantPrismas = 0;
 	}
 	public static CentroEstudios getInstance() {
 		if (instance == null) {
@@ -62,6 +65,12 @@ public class CentroEstudios implements Serializable{
 			e.printStackTrace();
 		}
 		
+	}
+	public int getCantPrismas() {
+		return cantPrismas;
+	}
+	public void setCantPrismas(int cantPrismas) {
+		this.cantPrismas = cantPrismas;
 	}
 	public ArrayList<Usuario> getMisUsuarios() {
 		return misUsuarios;
@@ -122,6 +131,12 @@ public class CentroEstudios implements Serializable{
 		estudiante.setGrupo(grupo.getId());
 		misUsuarios.set(ind, estudiante);
 	}
+	public static Prisma getPrismaAhora() {
+		return prismaAhora;
+	}
+	public static void setPrismaAhora(Prisma prismaAhora) {
+		CentroEstudios.prismaAhora = prismaAhora;
+	}
 	public int getGrupoPosition(String id) {
 		for(int i = 0; i < misGrupos.size(); i++) {
 			if(misGrupos.get(i).getId().equalsIgnoreCase(id)) {
@@ -134,10 +149,12 @@ public class CentroEstudios implements Serializable{
 		int index = getUsuarioPosition(usuario.getId());
 		prisma.setId(Integer.toString(misPrismas.size()));
 		usuario.setMisPrismas(prisma);
-		misUsuarios.set(index, usuario);
+		//misUsuarios.set(index, usuario);
+		prismaAhora = prisma;
+		cantPrismas++;
 		
 		int groupIndex = getGrupoPosition(usuario.getGrupo());
-		Grupo grupo = misGrupos.get(groupIndex);
+		/*Grupo grupo = misGrupos.get(groupIndex);
 		
 		if(usuario.isEsProfesor()) {
 			grupo.setProfesor(usuario);
@@ -146,8 +163,8 @@ public class CentroEstudios implements Serializable{
 			int groupEstu = grupo.getEstuPosition(usuario.getId());
 			grupo.getEstudiantes().set(groupEstu, usuario);
 
-		}
-		misGrupos.set(groupIndex, grupo);
+		}*/
+		//misGrupos.set(groupIndex, grupo);
 		
 		this.misPrismas.add(prisma);
 	}
@@ -189,4 +206,21 @@ public class CentroEstudios implements Serializable{
 		return -1;
 		
 	}
+	public Prisma buscarPrismaByCodigo(String codigo) {
+		Prisma aux = null;
+		for(int i = 0;i< cantPrismas;i++) {
+			if(misPrismas.get(i).getId().equalsIgnoreCase(codigo)) {
+				aux = misPrismas.get(i);
+				prismaAhora = misPrismas.get(i);
+				
+			}
+		}
+		return aux;
+	}
+	public void EliminarPrisma(Prisma aux) {
+		misPrismas.remove(aux);
+		cantPrismas--;
+		
+	}
+	
 }
