@@ -22,6 +22,7 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.ActionEvent;
 import javax.swing.JLabel;
 import javax.swing.ImageIcon;
+import java.awt.Toolkit;
 
 public class Principal{
 	private static JFrame frame;
@@ -49,6 +50,7 @@ public class Principal{
 	}
 	public Principal() {
 		frame = new JFrame();
+		frame.setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\Maykhol Sosa\\Downloads\\matematicas.png"));
 		frame.addWindowListener(new WindowAdapter() {
 			@Override
 			public void windowClosing(WindowEvent arg0) {
@@ -73,7 +75,7 @@ public class Principal{
 		panel.setLayout(new BorderLayout(0, 0));
 		
 		JLabel background = new JLabel("");
-		background.setIcon(new ImageIcon(Principal.class.getResource("/img/background.jpg")));
+	  background.setIcon(new ImageIcon(Principal.class.getResource("/image/background.jpg")));
 		panel.add(background, BorderLayout.CENTER);
 		
 		JMenuBar menuBar = new JMenuBar();
@@ -95,7 +97,7 @@ public class Principal{
 		JMenuItem mntmListarFiguras = new JMenuItem("Mis Figuras");
 		mntmListarFiguras.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				ListPrismas listPrismas = new ListPrismas(usuario);
+				ListPrismas listPrismas = new ListPrismas();
 				listPrismas.setModal(true);
 				listPrismas.setVisible(true);
 			}

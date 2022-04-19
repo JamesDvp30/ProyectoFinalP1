@@ -24,6 +24,10 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import java.awt.Color;
 import javax.swing.border.LineBorder;
+import java.awt.SystemColor;
+import java.awt.Font;
+import javax.swing.border.TitledBorder;
+import java.awt.Toolkit;
 
 public class CrearGrupo extends JDialog {
 
@@ -36,21 +40,24 @@ public class CrearGrupo extends JDialog {
 	JButton btnSeleccionar = new JButton("Seleccionar");
 
 	public CrearGrupo() {
+		setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\Maykhol Sosa\\Downloads\\matematicas.png"));
 		setTitle("Crear Grupo");
-		setBounds(100, 100, 488, 374);
-		getContentPane().setLayout(new BorderLayout());
+		setBounds(100, 100, 487, 393);
+		getContentPane().setLayout(null);
+		contentPanel.setBounds(0, 0, 472, 298);
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
-		getContentPane().add(contentPanel, BorderLayout.CENTER);
+		getContentPane().add(contentPanel);
 		contentPanel.setLayout(new BorderLayout(0, 0));
 		{
 			JPanel panel = new JPanel();
 			panel.setBorder(new LineBorder(new Color(0, 0, 0)));
-			panel.setBackground(Color.LIGHT_GRAY);
+			panel.setBackground(SystemColor.activeCaption);
 			contentPanel.add(panel, BorderLayout.CENTER);
 			panel.setLayout(null);
 			
 			JLabel lblNewLabel = new JLabel("Profesor Designado:");
-			lblNewLabel.setBounds(10, 11, 115, 14);
+			lblNewLabel.setBounds(10, 11, 149, 14);
+			lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 12));
 			panel.add(lblNewLabel);
 			
 			JScrollPane scrollPane = new JScrollPane();
@@ -79,11 +86,13 @@ public class CrearGrupo extends JDialog {
 		}
 		{
 			JPanel buttonPane = new JPanel();
-			buttonPane.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
-			buttonPane.setBackground(Color.LIGHT_GRAY);
-			buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
-			getContentPane().add(buttonPane, BorderLayout.SOUTH);
+			buttonPane.setBounds(10, 295, 452, 48);
+			buttonPane.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+			buttonPane.setBackground(SystemColor.activeCaption);
+			getContentPane().add(buttonPane);
 			{
+				btnSeleccionar.setFont(new Font("Tahoma", Font.BOLD, 12));
+				btnSeleccionar.setBounds(232, 7, 101, 30);
 				btnSeleccionar.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
 						Usuario usuario = CentroEstudios.getInstance().buscarUsuarioById(select);
@@ -92,6 +101,7 @@ public class CrearGrupo extends JDialog {
 						loadProfesores();
 					}
 				});
+				buttonPane.setLayout(null);
 				
 				btnSeleccionar.setEnabled(false);
 				btnSeleccionar.setActionCommand("OK");
@@ -99,7 +109,9 @@ public class CrearGrupo extends JDialog {
 				getRootPane().setDefaultButton(btnSeleccionar);
 			}
 			{
-				JButton cancelButton = new JButton("Cancel");
+				JButton cancelButton = new JButton("Cancelar");
+				cancelButton.setFont(new Font("Tahoma", Font.BOLD, 12));
+				cancelButton.setBounds(343, 7, 95, 30);
 				cancelButton.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
 						dispose();

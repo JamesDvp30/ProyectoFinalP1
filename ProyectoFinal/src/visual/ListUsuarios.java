@@ -20,6 +20,10 @@ import logico.CentroEstudios;
 import logico.Grupo;
 import logico.Usuario;
 import java.awt.Color;
+import java.awt.SystemColor;
+import javax.swing.border.TitledBorder;
+import java.awt.Font;
+import java.awt.Toolkit;
 
 public class ListUsuarios extends JDialog {
 
@@ -33,19 +37,27 @@ public class ListUsuarios extends JDialog {
 	JButton btnSeleccionar = new JButton("Seleccionar");
 
 	public ListUsuarios(boolean listGrupos, String grupoId) {
+		setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\Maykhol Sosa\\Downloads\\matematicas.png"));
+		getContentPane().setBackground(SystemColor.window);
 		setTitle("Lista de Usuarios");
-		setBounds(100, 100, 570, 343);
-		getContentPane().setLayout(new BorderLayout());
-		contentPanel.setBackground(Color.LIGHT_GRAY);
-		contentPanel.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
-		getContentPane().add(contentPanel, BorderLayout.CENTER);
+		setBounds(100, 100, 604, 398);
+		getContentPane().setLayout(null);
+		contentPanel.setBounds(10, 3, 568, 280);
+		contentPanel.setBackground(SystemColor.activeCaption);
+		contentPanel.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+		getContentPane().add(contentPanel);
+		btnSeleccionar.setFont(new Font("Tahoma", Font.BOLD, 12));
+		btnSeleccionar.setBounds(222, 7, 106, 36);
 		btnSeleccionar.setEnabled(false);
 		btnSeleccionar.setVisible(listGrupos);
+		btnRegistrar.setFont(new Font("Tahoma", Font.BOLD, 12));
+		btnRegistrar.setBounds(338, 7, 102, 36);
 		btnRegistrar.setVisible(!listGrupos);
-		contentPanel.setLayout(new BorderLayout(0, 0));
+		contentPanel.setLayout(null);
 		{
 			JScrollPane scrollPane = new JScrollPane();
-			contentPanel.add(scrollPane, BorderLayout.CENTER);
+			scrollPane.setBounds(10, 11, 550, 263);
+			contentPanel.add(scrollPane);
 			{
 				table = new JTable();
 				table.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
@@ -74,10 +86,10 @@ public class ListUsuarios extends JDialog {
 		}
 		{
 			JPanel buttonPane = new JPanel();
-			buttonPane.setBackground(Color.LIGHT_GRAY);
-			buttonPane.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
-			buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
-			getContentPane().add(buttonPane, BorderLayout.SOUTH);
+			buttonPane.setBounds(20, 294, 547, 54);
+			buttonPane.setBackground(SystemColor.activeCaption);
+			buttonPane.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+			getContentPane().add(buttonPane);
 			{
 				
 				btnRegistrar.addActionListener(new ActionListener() {
@@ -99,6 +111,7 @@ public class ListUsuarios extends JDialog {
 							dispose();
 						}
 					});
+					buttonPane.setLayout(null);
 					buttonPane.add(btnSeleccionar);
 				}
 				btnRegistrar.setActionCommand("OK");
@@ -107,6 +120,8 @@ public class ListUsuarios extends JDialog {
 			}
 			{
 				JButton btnCancelar = new JButton("Cancelar");
+				btnCancelar.setFont(new Font("Tahoma", Font.BOLD, 12));
+				btnCancelar.setBounds(450, 7, 86, 36);
 				btnCancelar.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
 						dispose();

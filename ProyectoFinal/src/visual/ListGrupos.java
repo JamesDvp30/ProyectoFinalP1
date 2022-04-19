@@ -22,6 +22,9 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.ActionEvent;
 import java.awt.Color;
+import java.awt.SystemColor;
+import java.awt.Font;
+import java.awt.Toolkit;
 
 public class ListGrupos extends JDialog {
 
@@ -37,18 +40,22 @@ public class ListGrupos extends JDialog {
 
 
 	public ListGrupos() {
+		setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\Maykhol Sosa\\Downloads\\matematicas.png"));
+		getContentPane().setBackground(SystemColor.activeCaption);
 		setTitle("Listar Todos Los Grupos");
-		setBounds(100, 100, 450, 300);
-		getContentPane().setLayout(new BorderLayout());
-		contentPanel.setBackground(Color.LIGHT_GRAY);
-		contentPanel.setLayout(new FlowLayout());
+		setBounds(100, 100, 503, 370);
+		getContentPane().setLayout(null);
+		contentPanel.setBounds(10, 11, 467, 252);
+		contentPanel.setBackground(SystemColor.window);
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
-		getContentPane().add(contentPanel, BorderLayout.CENTER);
+		getContentPane().add(contentPanel);
 		setLocationRelativeTo(null);
+		contentPanel.setLayout(null);
 		contentPanel.setLayout(new BorderLayout(0, 0));
 		{
 			JPanel panel = new JPanel();
-			contentPanel.add(panel, BorderLayout.CENTER);
+			panel.setBounds(5, 5, 435, 242);
+			contentPanel.add(panel);
 			panel.setLayout(new BorderLayout(0, 0));
 			
 			JScrollPane scrollPane = new JScrollPane();
@@ -80,11 +87,13 @@ public class ListGrupos extends JDialog {
 		}
 		{
 			JPanel buttonPane = new JPanel();
+			buttonPane.setBounds(10, 271, 467, 49);
 			buttonPane.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
-			buttonPane.setBackground(Color.LIGHT_GRAY);
-			buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
-			getContentPane().add(buttonPane, BorderLayout.SOUTH);
+			buttonPane.setBackground(SystemColor.window);
+			getContentPane().add(buttonPane);
 			{
+				btnAgregar.setFont(new Font("Tahoma", Font.BOLD, 12));
+				btnAgregar.setBounds(175, 12, 156, 27);
 				btnAgregar.setEnabled(false);
 				btnAgregar.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
@@ -94,6 +103,8 @@ public class ListGrupos extends JDialog {
 					}
 				});
 				{
+					btnVerDetalles.setFont(new Font("Tahoma", Font.BOLD, 12));
+					btnVerDetalles.setBounds(47, 12, 118, 27);
 					btnVerDetalles.setEnabled(false);
 					btnVerDetalles.addActionListener(new ActionListener() {
 						public void actionPerformed(ActionEvent e) {
@@ -104,6 +115,7 @@ public class ListGrupos extends JDialog {
 							verdetalles.setVisible(true);
 						}
 					});
+					buttonPane.setLayout(null);
 					buttonPane.add(btnVerDetalles);
 				}
 				btnAgregar.setActionCommand("OK");
@@ -112,6 +124,8 @@ public class ListGrupos extends JDialog {
 			}
 			{
 				JButton btnCancelar = new JButton("Cancelar");
+				btnCancelar.setFont(new Font("Tahoma", Font.BOLD, 12));
+				btnCancelar.setBounds(340, 12, 105, 27);
 				btnCancelar.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
 						dispose();

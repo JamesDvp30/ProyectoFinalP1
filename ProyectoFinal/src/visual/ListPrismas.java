@@ -23,6 +23,7 @@ import logico.CentroEstudios;
 import logico.Prisma;
 import logico.Usuario;
 import java.awt.Color;
+import java.awt.Toolkit;
 
 public class ListPrismas extends JDialog {
 
@@ -33,10 +34,12 @@ public class ListPrismas extends JDialog {
 	private String select;
 	private int index;
 	private JButton btnVisualizar = new JButton("Ver Prisma");
+	private JButton btnEliminar;
 
-	public ListPrismas(Usuario usuario) {
+	public ListPrismas() {
+		setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\Maykhol Sosa\\Downloads\\matematicas.png"));
 		setTitle("Lista de Mis Prismas");
-		setBounds(100, 100, 980, 476);
+		setBounds(100, 100, 756, 476);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBackground(Color.LIGHT_GRAY);
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -47,9 +50,10 @@ public class ListPrismas extends JDialog {
 		{
 			JPanel panel = new JPanel();
 			contentPanel.add(panel, BorderLayout.CENTER);
-			panel.setLayout(new BorderLayout(0, 0));
+			panel.setLayout(null);
 			
 			JScrollPane scrollPane = new JScrollPane();
+			scrollPane.setBounds(78, 0, 650, 380);
 			scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 			panel.add(scrollPane);
 			{
@@ -62,13 +66,14 @@ public class ListPrismas extends JDialog {
 						if(index >= 0) {
 							select = table.getValueAt(index, 0).toString();
 							btnVisualizar.setEnabled(true);
+							btnEliminar.setEnabled(true);
+							
 						}
 					}
 				});
 				model = new DefaultTableModel();
-				String[] columnNames = {"Id","Tipo","Vertice 1","Vertice 2","Vertice 3","Vertice 4", "Area Base", "Perimetro", "Area Lateral", "Area Total",  "Volumen"};
+				String[] columnNames = {"Id","Altura"};
 				model.setColumnIdentifiers(columnNames);
-				loadPrismas(usuario.getMisPrismas());
 				table.setModel(model);
 				scrollPane.setViewportView(table);
 			}
@@ -85,9 +90,24 @@ public class ListPrismas extends JDialog {
 				
 				btnVisualizar.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
-
+						int fila = table.getSelectedRow();
+						CentroEstudios.getInstance().buscarPrismaByCodigo(CentroEstudios.getInstance().getMisPrismas().get(fila).getId());
+                        Prisma1 dialog = new Prisma1();
+                        dialog.setVisible(true);
 					}
 				});
+				
+				btnEliminar = new JButton("Eliminar");
+				btnEliminar.setEnabled(false);
+				btnEliminar.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent arg0) {
+						int fila = table.getSelectedRow();
+						Prisma aux = CentroEstudios.getInstance().getMisPrismas().get(fila);
+						CentroEstudios.getInstance().EliminarPrisma(aux);
+						loadPrismas();
+					}
+				});
+				buttonPane.add(btnEliminar);
 				btnVisualizar.setActionCommand("OK");
 				buttonPane.add(btnVisualizar);
 				getRootPane().setDefaultButton(btnVisualizar);
@@ -103,27 +123,20 @@ public class ListPrismas extends JDialog {
 				buttonPane.add(cancelButton);
 			}
 		}
+		loadPrismas();
 	}
-	private void loadPrismas(ArrayList<Prisma> prismas) {
+	private void loadPrismas() {
 		model.setRowCount(0);
 		fila = new Object[model.getColumnCount()];
-		
-		for (Prisma prisma : prismas) {
-			fila[0] = prisma.getId();
-			fila[1] = prisma.getClass().getSimpleName();
-			for(int i = 0; i < prisma.getVertices().size(); i++) {
-				fila[i+2] =  "(" + String.valueOf(prisma.getVertices().get(i).getPosicionX())+ "," + String.valueOf(prisma.getVertices().get(i).getPosicionY()) + ")";
-			}
-			fila[6] = prisma.area();
-			fila[7] = prisma.perimetro();
-			fila[8] = prisma.areaLateral();
-			fila[9] = prisma.areaTotal();
-			fila[10] = prisma.volumen();
+			for(int i = 0; i < CentroEstudios.getInstance().getCantPrismas(); i++) {
+				fila[0] = CentroEstudios.getInstance().getMisPrismas().get(i).getId();
+				fila[1] = CentroEstudios.getInstance().getMisPrismas().get(i).getAlto();
+				
+			
+			
 
 			model.addRow(fila);
+			}
 		}
-		
-	}
-
 }
 

@@ -19,6 +19,9 @@ import javax.swing.border.EmptyBorder;
 import logico.CentroEstudios;
 import logico.Usuario;
 import java.awt.Color;
+import java.awt.SystemColor;
+import java.awt.Font;
+import java.awt.Toolkit;
 
 public class UpdUsuario extends JDialog {
 
@@ -29,16 +32,18 @@ public class UpdUsuario extends JDialog {
 	private JPasswordField psfConfirmPass;
 	
 	public UpdUsuario(Usuario usuario) {
+		setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\Maykhol Sosa\\Downloads\\matematicas.png"));
 		setTitle("Modificar Usuario");
-		setBounds(100, 100, 432, 365);
+		setBounds(100, 100, 432, 396);
 		setLocationRelativeTo(null);
-		getContentPane().setLayout(new BorderLayout());
+		getContentPane().setLayout(null);
+		contentPanel.setBounds(0, 0, 416, 289);
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
-		getContentPane().add(contentPanel, BorderLayout.CENTER);
+		getContentPane().add(contentPanel);
 		contentPanel.setLayout(new BorderLayout(0, 0));
 		
 		JPanel panel_principal = new JPanel();
-		panel_principal.setBackground(Color.LIGHT_GRAY);
+		panel_principal.setBackground(SystemColor.activeCaption);
 		panel_principal.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
 		contentPanel.add(panel_principal);
 		panel_principal.setLayout(null);
@@ -80,12 +85,14 @@ public class UpdUsuario extends JDialog {
 		loadUsuario(usuario);
 		{
 			JPanel buttonPane = new JPanel();
-			buttonPane.setBackground(Color.LIGHT_GRAY);
+			buttonPane.setBounds(10, 289, 393, 57);
+			buttonPane.setBackground(SystemColor.activeCaption);
 			buttonPane.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
-			buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
-			getContentPane().add(buttonPane, BorderLayout.SOUTH);
+			getContentPane().add(buttonPane);
 			{
 				JButton okButton = new JButton("Registrar");
+				okButton.setFont(new Font("Tahoma", Font.BOLD, 12));
+				okButton.setBounds(175, 7, 88, 39);
 				okButton.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {		
 						if(txtUsuario.getText().isEmpty() || txtNombre.getText().isEmpty() || String.valueOf(psfPass.getPassword()).isEmpty() || String.valueOf(psfConfirmPass.getPassword()).isEmpty()) {
@@ -110,19 +117,22 @@ public class UpdUsuario extends JDialog {
 						
 					}
 				});
+				buttonPane.setLayout(null);
 				okButton.setActionCommand("OK");
 				buttonPane.add(okButton);
 				getRootPane().setDefaultButton(okButton);
 			}
 			{
 				JButton cancelButton = new JButton("Cancelar");
+				cancelButton.setBounds(273, 7, 88, 39);
+				buttonPane.add(cancelButton);
+				cancelButton.setFont(new Font("Tahoma", Font.BOLD, 12));
 				cancelButton.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
 						dispose();
 					}
 				});
 				cancelButton.setActionCommand("Cancel");
-				buttonPane.add(cancelButton);
 			}
 		}
 	}

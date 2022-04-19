@@ -25,6 +25,9 @@ import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import java.awt.Color;
+import java.awt.Toolkit;
+import java.awt.SystemColor;
+import java.awt.Font;
 
 public class VerDetallesGrupo extends JDialog {
 
@@ -39,6 +42,7 @@ public class VerDetallesGrupo extends JDialog {
 	private static Grupo grupo;
 
 	public VerDetallesGrupo(String grupoId) {
+		setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\Maykhol Sosa\\Downloads\\matematicas.png"));
 		int index = CentroEstudios.getInstance().getGrupoPosition(grupoId);
 		if(index == -1) {
 			JOptionPane.showMessageDialog(null, "El usuario no pertenece a ningun grupo", "ERROR!", JOptionPane.ERROR_MESSAGE);
@@ -54,17 +58,18 @@ public class VerDetallesGrupo extends JDialog {
 		contentPanel.setLayout(new BorderLayout(0, 0));
 		{
 			JPanel panel = new JPanel();
-			panel.setBackground(Color.LIGHT_GRAY);
+			panel.setBackground(SystemColor.window);
 			contentPanel.add(panel, BorderLayout.CENTER);
 			panel.setLayout(null);
 			
 			JPanel panel_1 = new JPanel();
-			panel_1.setBackground(Color.LIGHT_GRAY);
+			panel_1.setBackground(SystemColor.activeCaption);
 			panel_1.setBounds(10, 11, 697, 47);
 			panel.add(panel_1);
 			panel_1.setLayout(null);
 			
 			JLabel lblProfesor = new JLabel("Profesor: ");
+			lblProfesor.setFont(new Font("Tahoma", Font.BOLD, 12));
 			lblProfesor.setBounds(10, 11, 69, 14);
 			panel_1.add(lblProfesor);
 			
@@ -76,12 +81,13 @@ public class VerDetallesGrupo extends JDialog {
 			txtProfesor.setText(grupo.getProfesor().getNombre());
 			
 			JPanel panel_2 = new JPanel();
-			panel_2.setBackground(Color.LIGHT_GRAY);
+			panel_2.setBackground(SystemColor.activeCaption);
 			panel_2.setBounds(10, 69, 697, 285);
 			panel.add(panel_2);
 			panel_2.setLayout(null);
 			
 			JLabel lblEstudiantes = new JLabel("Estudiantes:");
+			lblEstudiantes.setFont(new Font("Tahoma", Font.BOLD, 12));
 			lblEstudiantes.setBounds(10, 11, 95, 14);
 			panel_2.add(lblEstudiantes);
 			
@@ -100,12 +106,13 @@ public class VerDetallesGrupo extends JDialog {
 			}
 			
 			JPanel panel_3 = new JPanel();
-			panel_3.setBackground(Color.LIGHT_GRAY);
+			panel_3.setBackground(SystemColor.activeCaption);
 			panel_3.setBounds(10, 365, 697, 222);
 			panel.add(panel_3);
 			panel_3.setLayout(null);
 			
 			JLabel lblPrismas = new JLabel("Prismas Del Grupo:");
+			lblPrismas.setFont(new Font("Tahoma", Font.BOLD, 12));
 			lblPrismas.setBounds(10, 11, 137, 14);
 			panel_3.add(lblPrismas);
 			
@@ -117,9 +124,9 @@ public class VerDetallesGrupo extends JDialog {
 				tablePrismas.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
 				
 				modelPrism = new DefaultTableModel();
-				String[] columnNames = {"Id","Tipo","Vertice 1","Vertice 2","Vertice 3","Vertice 4", "Area Base", "Perimetro", "Area Lateral", "Area Total",  "Volumen"};
+				String[] columnNames = {"Id","Tipo","Vertice X", "Vertice Y", "Altura","Area"};
 				modelPrism.setColumnIdentifiers(columnNames);
-				loadPrismas(grupo);
+				//loadPrismas(grupo);
 				tablePrismas.setModel(modelPrism);
 				scrollPane_1.setViewportView(tablePrismas);
 				
@@ -127,11 +134,12 @@ public class VerDetallesGrupo extends JDialog {
 		}
 		{
 			JPanel buttonPane = new JPanel();
-			buttonPane.setBackground(Color.LIGHT_GRAY);
+			buttonPane.setBackground(SystemColor.activeCaption);
 			buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
 			getContentPane().add(buttonPane, BorderLayout.SOUTH);
 			{
 				JButton btnCancelar = new JButton("Cancelar");
+				btnCancelar.setFont(new Font("Tahoma", Font.BOLD, 12));
 				btnCancelar.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
 						dispose();
@@ -152,7 +160,7 @@ public class VerDetallesGrupo extends JDialog {
 			modelEstu.addRow(filaEstu);
 		}
 	}
-	private void loadPrismas(Grupo grupo) {
+	/*private void loadPrismas(Grupo grupo) {
 		modelPrism.setRowCount(0);
 		filaPrism = new Object[modelPrism.getColumnCount()];
 		for (Prisma prisma : grupo.getEstudentPrism()) {
@@ -168,5 +176,5 @@ public class VerDetallesGrupo extends JDialog {
 			filaPrism[10] = prisma.volumen();		
 			modelPrism.addRow(filaPrism);
 		}
-	}
+	}*/
 }
